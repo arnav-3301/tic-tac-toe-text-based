@@ -27,7 +27,7 @@ int evaluateGame(int state[], bool &over) {
         if ((state[row*3] != 0) && (state[row*3] == state[(row*3) +1]) && (state[(row*3) +1] == state[(row*3) +2])) {
             over = true;
             cout << "Row match!" << endl;
-            return state[row];
+            return state[row*3];
         }
     }
 
