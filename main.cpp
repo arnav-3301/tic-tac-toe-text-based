@@ -25,16 +25,18 @@ for (int row = 0; row < 3; row++) {
 int evaluateGame(int state[], bool &over) {
     // check rows
     for (int row = 0; row < 3; row++) {
-        if (state[row] != 0 && state[row] == state[row*3 +1] && state[row*3 +1] == state[row*3 +2]) {
+        if ((state[row*3] != 0) && (state[row*3] == state[(row*3) +1]) && (state[(row*3) +1] == state[(row*3) +2])) {
             over = true;
+            cout << "Row match!" << endl;
             return state[row];
         }
     }
 
     // check columns
     for (int col = 0; col < 3; col++) {
-        if (state[col] != 0 && state[col] == state[col+3] && state[col+3] == state[col+6]) {
+        if ((state[col] != 0) && (state[col] == state[col+3]) && (state[col+3] == state[col+6])) {
             over = true;
+            cout << "Col match!" << endl;
             return state[col];
         }
     }
@@ -59,6 +61,11 @@ int evaluateGame(int state[], bool &over) {
         return 0;
     }
     return 0;
+}
+void monitor(int state[]) {
+    for (int i = 0; i < 9;i++) {
+        cout << state[i] << " ";
+    }
 }
 
 
