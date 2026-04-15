@@ -7,19 +7,18 @@ for (int row = 0; row < 3; row++) {
     for (int col = 0; col < 3; col++) {
         int i = row * 3 + col;
         if (state[i] == 0) {
-            cout << " ";
+            cout << " " << i+1 << " ";
         }
         else if (state[i] == 1) {
-            cout << "O";
+            cout << " O ";
         }
-        else cout << "X";
-        if (col != 2) cout << " | ";
+        else cout << " X ";
+        if (col != 2) cout << "|";
     }
     if (row != 2)
-    cout << "\n__|___|__" << endl;
-    else cout << "\n  |   |  " << endl;
+    cout << "\n---+---+---" << endl;
 }
-    cout << endl;
+    cout << "\n\n";
 }
 
 int evaluateGame(int state[], bool &over) {
@@ -44,10 +43,12 @@ int evaluateGame(int state[], bool &over) {
     // check diagonals
     if (state[0] != 0 && state[0] == state[4] && state[4] == state[8]) {
         over = true;
+        cout << "Diagonal match!" << endl;
         return state[4];
     }
     else if (state[2] != 0 && state[2] == state[4] && state[4] == state[6]) {
         over = true;
+        cout << "Diagonal match!" << endl;
         return state[2];
     }
     // check draw
@@ -74,7 +75,7 @@ int main() {
     bool over = false;
     bool circle = false;
     char winner = 0;
-    cout << "Press q to quit\n\n";
+    cout << "\nTic-Tac-Toe(Press q to quit)\n\n";
     while (!over) {
       // take user input
         char c;
